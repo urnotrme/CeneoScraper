@@ -1,6 +1,6 @@
 # CeneoScraper
 
-## Struktura opiniiw serwisie [Ceneo.pl] (https://www.ceneo.pl/)
+## Struktura opinii w serwisie [Ceneo.pl] (https://www.ceneo.pl/)
 
 |Składowa opinii|Selektor|Nazwa zmiennej|Typ danych|
 |---------------|--------|--------------|----------|

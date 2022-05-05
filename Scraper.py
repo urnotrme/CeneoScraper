@@ -1,8 +1,15 @@
-import requests, json
+import requests, json, re
 from bs4 import BeautifulSoup
 
-url="https://www.ceneo.pl/113706425#tab=reviews"
 all_opinions = []
+ID_product = input("Podaj index produktu: ")
+
+no_file = False
+if not isinstance(ID_product, int):
+    no_file = True
+    ID_product="".join(map(str, re.findall(r"\d", ID_product)))
+
+url = "https://www.ceneo.pl/{}#tab=reviews".format(ID_product)
 while (url):
     print(url)
     response=requests.get(url)
@@ -10,6 +17,7 @@ while (url):
     page = BeautifulSoup(response.text, "html.parser")
 
     opinions = page.select("div.js_product-review")
+    
     for opinion in opinions:
         opinion = opinions.pop(0)
         opinion_id = opinion["data-entry-id"]
@@ -47,12 +55,13 @@ while (url):
         }
 
         all_opinions.append(single_opinion)
-
-    try: 
+    try:
         url = "https://www.ceneo.pl"+page.select_one("a.pagination__next")["href"]
     except TypeError:
-        url= None
+        url = None   
 
-    
-with open ("opinions/113706425.json", "w", encoding="UTF-8") as jf:
-    json.dump(all_opinions, jf,  indent=4, ensure_ascii=False)
+if no_file:
+    with open ("opinions/"+ID_product+".json", "w", encoding="UTF-8") as jf:
+        json.dump(all_opinions, jf, indent=4, ensure_ascii=False)   
+else:
+    pass

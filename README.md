@@ -29,3 +29,12 @@
     c. zamiana instrukcji pobierających składowe opinii do pojedynczych zmiennych i tworzących z nich słownik na 
     wyrażenie słownikowe \(dictionary comprehension\) tworzące słownik reprezentujący pojedynczą opinię na
     podstawie słownika selektorów
+7. Analiza opinii o wybranym produkcie
+    1. wczytanie wszystkich opinii o wskazanym produkcie do obiektu DataFrame
+    2. wyliczenie podstawowych statystyk na podstawie opinii
+        1. liczba wszystkich opinii o produkcie
+        2. liczba opinii w których autor podał listę zalet produktu
+        3. liczba opinii w których autor podał listę wad produktu
+    3. przygotowanie wykresów na podstawie zawartości opinii
+        1. udział poszczególnych rekomendacji w ogólnej liczbie opinii
+        2. histogram występowania poszczególnych ocen
